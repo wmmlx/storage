@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="js/storageEvent.js"></script>
+</head>
+<body>
+<script>
+    var usInfo={
+       "name":"zhangsan",
+       "age":123
+    }
+    var arr=[{"bookName":"操作系统"},{"bookName":"组成原理"}];
+    var str="天气不错";
+    var st2="jsiodjsidj";
+    var num=88;
+    //同时设置多个
+    st.setMoreLocalStorageData(["Json",usInfo],["Num",123],["Arr",arr],["Str",str]);
+    st.setMoreSessionStorageData(["Json",usInfo],["Num",123],["Arr",arr],["Str",str]);
+
+    //添加不同类型数据
+     st.setLocalStorage("usInfo",usInfo);
+     st.setSessionStorage("usInfo",usInfo);
+
+     st.setLocalStorage("arr",arr);
+     st.setSessionStorage("arr",arr);
+
+     st.setLocalStorage("str",str);
+     st.setSessionStorage("str",str);
+
+     st.setLocalStorage("st2",st2);
+     st.setSessionStorage("st2",st2);
+
+     st.setLocalStorage("num",num);
+     st.setSessionStorage("num",num);
+
+
+     //添加数据指定数据存储方式   或者不指定，使用默认存储方式
+     st.storageData("sex","女");
+     st.storageData("sessionSt","sex","男");
+
+
+     //获取不同类型数据
+     log(st.getLocalStorage("usInfo"));
+     log(st.getSessionStorage("usInfo"));
+
+     log(st.getLocalStorage("arr"));
+     log(st.getSessionStorage("arr"));
+
+     log(st.getLocalStorage("str"));
+     log(st.getSessionStorage("str"));
+
+     log(st.getLocalStorage("st2"));
+     log(st.getSessionStorage("st2"));
+
+     log(st.getLocalStorage("num"));
+     log(st.getSessionStorage("num"));
+
+     //查找所有数据   从不同存储位置
+     log(st.findAllFromLocalStorage());
+     log(st.findAllFromSessionStorage());
+     log(st.findAll());
+     log(st.findAll("sessionSt"));
+
+     //查找某一个数据通过name   从不同存储位置返回索引值
+
+     log(st.findLocalStorageById("num")) ;
+     log(st.findSessionStorageById("usInfo"))   ;
+     log(st.findById("sex"));
+     log(st.findById("sex","sessionSt"));
+
+     //从不同位置删除      1删除成功  -1删除失败
+     log(st.delLocalStorage("num"));
+     log(st.delSessionStorage("num"));
+     log(st.delStorage("session","sex"));
+
+    function log(param){
+        console.log(param);
+    }
+
+</script>
+</body>
+</html>
